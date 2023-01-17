@@ -7,7 +7,6 @@ from app.serializers import PredictionSerializer
 
 def run_prediction():
     data = PredictionSerializer(Device.objects.all(), many=True).data
-    # print(data)
     df_type = {}
     last_week_cnt = {}
     for data_idx in range(len(data)):
@@ -96,6 +95,7 @@ def run_prediction():
             pred = model.predict(features_df)
             preds[device].append(pred[0])
             prv = pred[0]
+    print(preds)
     return preds
 
 # JV ORZZZZZZ AWOO
